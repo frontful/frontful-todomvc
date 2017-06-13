@@ -1,0 +1,24 @@
+{
+  "name": "frontful-todomvc",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "build": "frontful-environment build",
+    "start": "frontful-environment start",
+    "start:build": "frontful-environment build && PORT=8000 node ./build/server"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "frontful-dal": "0.x || 1.x",
+    "frontful-environment": "0.x || 1.x",
+    "frontful-model": "0.x || 1.x",
+    "frontful-resolver": "0.x || 1.x",
+    "frontful-router": "0.x || 1.x",
+    "frontful-style": "0.x || 1.x",
+    "mobx": "^3.1.9",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
