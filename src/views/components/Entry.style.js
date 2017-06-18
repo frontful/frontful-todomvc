@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('.entry', {
     borderBottom: '1px solid #e6e6e6',
     background: 'rgba(0, 0, 0, 0.003)',

@@ -4,7 +4,7 @@ import {resolver} from 'frontful-resolver'
 import {Todo} from '../../models/Todo'
 import Input from './Input'
 
-@resolver.config(({models}) => ({
+@resolver.define(({models}) => ({
   todo: models.global(Todo)
 }))
 @resolver((resolve) => {
@@ -17,11 +17,10 @@ import Input from './Input'
     Input: <Input />,
   }))
 })
-@style(require('./Entry.style').style)
+@style(require('./Entry.style'))
 export default class Entry extends React.PureComponent {
   render() {
     const {style, Input, completed, toggle, allCount} = this.props
-
     return (
       <section className={style.css('entry')}>
         {allCount > 0 &&

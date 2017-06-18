@@ -1,7 +1,7 @@
 import imgChecked from '../../../assets/img/checked.svg'
 import imgUnchecked from '../../../assets/img/unchecked.svg'
 
-export const style = ({css}) => {
+export default ({css}) => {
   css('.item', {
     position: 'relative',
     borderBottom: '1px solid #ededed',

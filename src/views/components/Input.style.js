@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('.input', {
     padding: '16px 16px 16px 60px',
     border: 'none',

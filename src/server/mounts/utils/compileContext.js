@@ -13,13 +13,14 @@ function compileContext(element, options) {
   return resolver.execute().then((Application) => {
     const styleManagerSession = style.manager.getSession(options.req.headers['user-agent'])
     const view = ReactDOMServer.renderToString(
-      <Style.Session session={styleManagerSession}>
+      <Style session={styleManagerSession}>
         <Application />
-      </Style.Session>
+      </Style>
     )
 
     return {
       style: styleManagerSession.renderToString(),
+      state: models.renderToString(),
       view: view,
     }
   })

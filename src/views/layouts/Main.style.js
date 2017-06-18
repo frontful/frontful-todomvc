@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('.header', {
     color: 'rgba(175, 47, 47, 0.15)',
     fontSize: '100px',

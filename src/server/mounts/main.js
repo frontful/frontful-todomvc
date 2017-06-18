@@ -18,10 +18,10 @@ app.use((req, res, next) => {
           <title>Frontful TodoMVC</title>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
           ${context.style}
-          <noscript id="sidx"></noscript>
         </head>
         <body>
           <div id="app">${context.view}</div>
+          ${context.state}
           <script src="${assets.js.vendor}"></script>
           <script src="${assets.js.main}"></script>
         </body>

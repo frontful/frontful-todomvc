@@ -2,13 +2,9 @@ import Control from '../components/Control'
 import Entry from '../components/Entry'
 import Items from '../components/Items'
 import React from 'react'
-import {Todo} from '../../models/Todo'
 import {resolver} from 'frontful-resolver'
 import {style} from 'frontful-style'
 
-@resolver.config(({models}) => ({
-  todo: models.global(Todo)
-}))
 @resolver((resolve) => {
   resolve(() => ({
     Entry: <Entry />,
@@ -16,7 +12,7 @@ import {style} from 'frontful-style'
     Control: <Control />,
   }))
 })
-@style(require('./Todos.style').style)
+@style(require('./Todos.style'))
 export default class Todos extends React.PureComponent {
   render() {
     const {style, Entry, Items, Control} = this.props

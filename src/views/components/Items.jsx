@@ -4,7 +4,7 @@ import {Todo} from '../../models/Todo'
 import {resolver} from 'frontful-resolver'
 import {style} from 'frontful-style'
 
-@resolver.config(({models}) => ({
+@resolver.define(({models}) => ({
   todo: models.global(Todo)
 }))
 @resolver((resolve) => {
@@ -14,7 +14,7 @@ import {style} from 'frontful-style'
     ))),
   }))
 })
-@style(require('./Items.style').style)
+@style(require('./Items.style'))
 export default class Todos extends React.PureComponent {
   render() {
     const {style, items} = this.props

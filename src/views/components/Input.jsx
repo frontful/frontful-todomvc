@@ -4,7 +4,7 @@ import {resolver} from 'frontful-resolver'
 import {Todo} from '../../models/Todo'
 import ReactDOM from 'react-dom'
 
-@resolver.config(({models}) => ({
+@resolver.define(({models}) => ({
   todo: models.global(Todo)
 }))
 @resolver((resolve) => {
@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom'
     text: item ? item.text : '',
   }))
 })
-@style(require('./Input.style').style)
+@style(require('./Input.style'))
 export default class Input extends React.PureComponent {
   save = () => {
     const target = ReactDOM.findDOMNode(this.refs.input)

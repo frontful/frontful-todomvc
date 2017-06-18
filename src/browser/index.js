@@ -11,9 +11,9 @@ window.frontful.environment.coldreload.deserializer = (state) => models.deserial
 
 resolver.execute().then((Application) => {
   ReactDOM.render(
-    <Style.Session>
+    <Style>
       <Application />
-    </Style.Session>,
+    </Style>,
     document.getElementById('app')
   )
 })

@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('.footer', {
     color: '#777',
     padding: '10px 15px',

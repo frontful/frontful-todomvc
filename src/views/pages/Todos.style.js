@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('.todos', {
     backgroundColor: '#fff',
     lineHeight: '1.4em',

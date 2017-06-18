@@ -1,39 +1,56 @@
 import {TodoItem} from './TodoItem'
 import {model, formatter} from 'frontful-model'
-import {action, computed} from 'mobx'
+import {computed} from 'mobx'
 import {Router} from 'frontful-router'
+import {Api} from './Api'
 
-const filterFromPath = /\/(active|all|completed)?$/
-
-@model.config(({models}) => ({
+@model.define(({models}) => ({
   router: models.global(Router.Model),
+  api: models.global(Api),
 }))
 @model.format({
-  items: formatter.array(formatter.model(TodoItem)),
+  items: formatter.private(formatter.array(formatter.model(TodoItem))),
 })
 export class Todo {
-  @action
-  add = (text) => {
-    this.items.push({text})
+  initialize() {
+    if (this.items.length === 0) {
+      return this.api.resolveItems(this.id).then((todo) => {
+        this.items = todo.items
+      }).catch(() => {
+        this.items = []
+      })
+    }
   }
 
-  @action
-  remove = (item) => {
+  add = async (text) => {
+    const item = new TodoItem({text}, this.context)
+    if (!this.id) {
+      var {id} = await this.api.createTodo()
+      this.router.push(`/${id}`)
+    }
+    await this.api.createItem(this.id, item.serialize())
+    this.items.push(item)
+  }
+
+  remove = async (item) => {
+    await this.api.removeItem(this.id, item.id)
     this.items.splice(this.items.indexOf(item), 1)
   }
 
-  @action
-  clearCompleted = () => {
+  clearCompleted = async () => {
     for (let i = 0; i < this.items.length;) {
-      if (this.items[i].completed) this.items.splice(i, 1)
+      if (this.items[i].completed) await this.remove(this.items[i])
       else i++
     }
   }
 
-  @action
-  toggle = () => {
-    const value = !this.completed
-    this.items.forEach((item) => {item.completed = value})
+  toggle = async () => {
+    const completed = !this.completed
+    for (let i = 0, l = this.items.length; i < l; i++) {
+      if (this.items[i].completed !== completed) {
+        await this.items[i].toggle(completed)
+      }
+    }
   }
 
   @computed
@@ -48,9 +65,12 @@ export class Todo {
     return this.items.reduce((completed, item) => item.completed && completed, true)
   }
 
-  @computed
+  get id() {
+    return this.router.params.todoId
+  }
+
   get filter() {
-    return this.router.path.match(filterFromPath)[1] || 'all'
+    return this.router.params.filter || 'all'
   }
 
   @computed

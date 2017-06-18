@@ -1,4 +1,4 @@
-export const style = ({css}) => {
+export default ({css}) => {
   css('body, html', {
     margin: '0',
     padding: '0',

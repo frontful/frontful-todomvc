@@ -14,7 +14,7 @@ import Input from './Input'
     Input: <Input item={item} />
   }))
 })
-@style(require('./Item.style').style)
+@style(require('./Item.style'))
 export default class Item extends React.PureComponent {
   state = {
     mode: 'view'
