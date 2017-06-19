@@ -9,7 +9,7 @@ import {Todo} from '../../models/Todo'
 }))
 @resolver((resolve) => {
   resolve(({todo}) => ({
-    todoId: todo.id,
+    id: todo.todoId,
     activeCount: todo.activeCount,
     allCount: todo.items.length,
     filter: todo.filter,
@@ -19,7 +19,7 @@ import {Todo} from '../../models/Todo'
 @style(require('./Control.style'))
 export default class Controls extends React.PureComponent {
   render() {
-    const {className, style, activeCount, filter, clearCompleted, allCount, todoId} = this.props
+    const {className, style, activeCount, filter, clearCompleted, allCount, id} = this.props
     const status = `${activeCount} ${activeCount === 1 ? 'item' : 'items'} left`
 
     if (allCount === 0) {
@@ -32,9 +32,9 @@ export default class Controls extends React.PureComponent {
           {status}
         </span>
         <div className={style.css('filters')}>
-          <Link href={`/${todoId}`} className={style.css('filter', filter === 'all' && 'active')}>All</Link>
-          <Link href={`/${todoId}/active`} className={style.css('filter', filter === 'active' && 'active')}>Active</Link>
-          <Link href={`/${todoId}/completed`} className={style.css('filter', filter === 'completed' && 'active')}>Completed</Link>
+          <Link href={`/${id}`} className={style.css('filter', filter === 'all' && 'active')}>All</Link>
+          <Link href={`/${id}/active`} className={style.css('filter', filter === 'active' && 'active')}>Active</Link>
+          <Link href={`/${id}/completed`} className={style.css('filter', filter === 'completed' && 'active')}>Completed</Link>
         </div>
         {allCount !== activeCount &&
           <button className={style.css('button')} onClick={clearCompleted}>Clear completed</button>

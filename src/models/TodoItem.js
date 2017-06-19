@@ -1,10 +1,10 @@
 import {model} from 'frontful-model'
 import {Api} from './Api'
-import {Router} from 'frontful-router'
+import {Todo} from './Todo'
 
 @model.define(({models}) => ({
   api: models.global(Api),
-  router: models.global(Router.Model),
+  todo: models.global(Todo),
 }))
 @model.format({
   id: '',
@@ -16,18 +16,30 @@ export class TodoItem {
     this.id = this.id || Math.random().toString(36).substr(2, 3)
   }
 
-  toggle = async (value) => {
-    const completed = typeof value === 'boolean' ? value : !this.completed
-    await this.api.updateItem(this.todoId, {items: [{id: this.id, completed}]})
-    this.completed = completed
+  toggle = () => {
+    const update = this.serialize()
+    update.completed = !this.completed
+    return this.api.updateItems(update).then(() => {
+      this.completed = !this.completed
+    })
   }
 
-  change = async (text) => {
-    await this.api.updateItem(this.todoId, {items: [{id: this.id, text}]})
-    this.text = text
+  remove = () => {
+    return this.api.removeItemsById(this.id).then(() => {
+      this.todo.removeItem(this)
+    })
   }
 
-  get todoId() {
-    return this.router.params.todoId
+  change = (text) => {
+    if (text) {
+      const update = this.serialize()
+      update.text = text
+      return this.api.updateItems(update).then(() => {
+        this.text = text
+      })
+    }
+    else {
+      return this.remove()
+    }
   }
 }

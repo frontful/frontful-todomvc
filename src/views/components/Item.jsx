@@ -5,12 +5,10 @@ import Input from './Input'
 
 @resolver((resolve) => {
   resolve(({item, remove}) => ({
-    uid: item.uid,
     remove: remove,
     completed: item.completed,
     text: item.text,
     toggle: item.toggle,
-    change: item.change,
     Input: <Input item={item} />
   }))
 })
@@ -27,10 +25,10 @@ export default class Item extends React.PureComponent {
   }
 
   render() {
-    const {uid, style, completed, text, toggle, Input, remove} = this.props
+    const {style, completed, text, toggle, Input, remove} = this.props
 
     return (
-      <div key={uid} className={style.css('item')}>
+      <div className={style.css('item')}>
         {this.state.mode === 'view' ?
           <div>
             <input

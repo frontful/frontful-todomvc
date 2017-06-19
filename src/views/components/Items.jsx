@@ -10,7 +10,7 @@ import {style} from 'frontful-style'
 @resolver((resolve) => {
   resolve(({todo}) => ({
     items: resolve.value(todo.filtered.map((item) => (
-      <Item item={item} remove={todo.remove.bind(null, item)}/>
+      <Item item={item} remove={item.remove}/>
     ))),
   }))
 })
@@ -18,17 +18,12 @@ import {style} from 'frontful-style'
 export default class Todos extends React.PureComponent {
   render() {
     const {style, items} = this.props
-
-    if (items.length === 0) {
-      return null
-    }
-
-    return (
+    return (items.length ?
       <section className={style.css('items')}>
         {items.map((Item, idx) => (
           <Item key={idx}/>
         ))}
-      </section>
+      </section> : null
     )
   }
 }

@@ -3,6 +3,7 @@ import Views from '../../views'
 import compileContext from './utils/compileContext'
 import express from 'express'
 import path from 'path'
+import {Exceptions} from 'frontful-resolver'
 
 const app = express()
 
@@ -28,7 +29,8 @@ app.use((req, res, next) => {
       </html>
     `)
   }).catch((error) => {
-    next(error)
+    if (error instanceof Exceptions.Cancel) next()
+    else next(error)
   })
 })
 

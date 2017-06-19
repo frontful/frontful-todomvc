@@ -18,10 +18,10 @@ export default class Input extends React.PureComponent {
   save = () => {
     const target = ReactDOM.findDOMNode(this.refs.input)
     const value = target.value.trim()
-    if (value) {
-      this.props.save(value)
-      target.value = ''
-      this.onBlur()
+    this.props.save(value)
+    target.value = ''
+    if (this.props.onBlur) {
+      this.props.onBlur()
     }
   }
 
@@ -33,10 +33,8 @@ export default class Input extends React.PureComponent {
   }
 
   onBlur = () => {
-    const {onBlur} = this.props
-    if (onBlur) {
+    if (this.props.onBlur) {
       this.save()
-      onBlur()
     }
   }
 
@@ -52,6 +50,7 @@ export default class Input extends React.PureComponent {
 
     return (
       <input
+        autoFocus
         type="text"
         onBlur={this.onBlur}
         className={style.css('input')}

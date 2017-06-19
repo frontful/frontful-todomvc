@@ -15,32 +15,30 @@ app.put('/todo', (req, res) => {
     var id = Math.random().toString(36).substr(2, 7)
   }
   while (store[id])
-  store[id] = {
-    items: [],
-  }
-  res.json({id})
+  store[id] = []
+  res.json(id)
 })
 
 app.put('/todo/:id', (req, res) => {
   const id = req.params.id
   const item = req.body
   if (store[id] && item.id && item.text && typeof item.completed === 'boolean') {
-    store[id].items.push({
+    store[id].push({
       id: item.id,
       text: item.text,
     })
-    res.json({})
+    res.json(true)
   }
   else {
-    res.status(400).json({})
+    res.status(400).json(false)
   }
 })
 
 app.post('/todo/:id', (req, res) => {
   const id = req.params.id
-  const updateItems = req.body && req.body.items
+  const updateItems = req.body
   if (store[id] && Array.isArray(updateItems)) {
-    const items = store[id].items
+    const items = store[id]
     updateItems.forEach((updateItem) => {
       const item = items.find((item) => item.id === updateItem.id)
       Object.assign(item, updateItem)
@@ -54,27 +52,30 @@ app.post('/todo/:id', (req, res) => {
 
 app.delete('/todo/:id', (req, res) => {
   const id = req.params.id
-  const ids = req.body && req.body.ids
+  const ids = req.body
   if (store[id] && Array.isArray(ids)) {
-    const items = store[id].items
+    const items = store[id]
     ids.forEach((id) => {
       const item = items.find((item) => item.id === id)
       items.splice(items.indexOf(item), 1)
     })
-    res.json({})
+    res.json(true)
   }
   else {
-    res.status(400).json({})
+    res.status(400).json(false)
   }
 })
 
 app.get('/todo/:id?', (req, res) => {
   const id = req.params.id
-  if (store[id]) {
+  if (!id) {
+    res.json([])
+  }
+  else if (store[id]) {
     res.json(store[id])
   }
   else {
-    res.status(404).json({})
+    res.status(400).json(false)
   }
 })
 

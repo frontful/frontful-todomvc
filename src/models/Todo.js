@@ -1,6 +1,6 @@
 import {TodoItem} from './TodoItem'
 import {model, formatter} from 'frontful-model'
-import {computed} from 'mobx'
+import {action, computed} from 'mobx'
 import {Router} from 'frontful-router'
 import {Api} from './Api'
 
@@ -9,48 +9,64 @@ import {Api} from './Api'
   api: models.global(Api),
 }))
 @model.format({
-  items: formatter.private(formatter.array(formatter.model(TodoItem))),
+  todoId: null,
+  items: formatter.array(formatter.model(TodoItem)),
 })
 export class Todo {
   initialize() {
-    if (this.items.length === 0) {
-      return this.api.resolveItems(this.id).then((todo) => {
-        this.items = todo.items
-      }).catch(() => {
-        this.items = []
+    if (this.todoId !== this.api.todoId) {
+      this.todoId = this.api.todoId
+      return this.api.getItems().then((items) => {
+        this.items = items
       })
     }
   }
 
-  add = async (text) => {
-    const item = new TodoItem({text}, this.context)
-    if (!this.id) {
-      var {id} = await this.api.createTodo()
-      this.router.push(`/${id}`)
+  add = (text) => {
+    if (text) {
+      const item = new TodoItem({text}, this.context)
+      return this.api.addItem(item.serialize()).then(() => {
+        this.items.push(item)
+      })
     }
-    await this.api.createItem(this.id, item.serialize())
-    this.items.push(item)
   }
 
-  remove = async (item) => {
-    await this.api.removeItem(this.id, item.id)
+  removeItem = (item) => {
     this.items.splice(this.items.indexOf(item), 1)
   }
 
-  clearCompleted = async () => {
-    for (let i = 0; i < this.items.length;) {
-      if (this.items[i].completed) await this.remove(this.items[i])
-      else i++
-    }
+  clearCompleted = () => {
+    const ids = this.items.reduce((ids, item) => {
+      if (item.completed) ids.push(item.id)
+      return ids
+    }, [])
+
+    return this.api.removeItemsById(ids).then(action(() => {
+      for (let i = 0; i < this.items.length;) {
+        if (this.items[i].completed) this.items.splice(i, 1)
+        else i++
+      }
+    }))
   }
 
-  toggle = async () => {
+  toggle = () => {
     const completed = !this.completed
-    for (let i = 0, l = this.items.length; i < l; i++) {
-      if (this.items[i].completed !== completed) {
-        await this.items[i].toggle(completed)
+    const updatedItems = this.items.reduce((updatedItems, item) => {
+      if (item.completed !== completed) {
+        const update = item.serialize()
+        update.completed = completed
+        updatedItems.push(update)
       }
-    }
+      return updatedItems
+    }, [])
+
+    return this.api.updateItems(updatedItems).then(() => {
+      for (let i = 0, l = this.items.length; i < l; i++) {
+        if (this.items[i].completed !== completed) {
+          this.items[i].completed = completed
+        }
+      }
+    })
   }
 
   @computed
@@ -63,10 +79,6 @@ export class Todo {
   @computed
   get completed() {
     return this.items.reduce((completed, item) => item.completed && completed, true)
-  }
-
-  get id() {
-    return this.router.params.todoId
   }
 
   get filter() {

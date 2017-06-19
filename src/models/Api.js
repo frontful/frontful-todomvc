@@ -1,27 +1,47 @@
 import {dal} from 'frontful-dal'
 import {isBrowser} from 'frontful-utils'
+import {Router} from 'frontful-router'
 
+@dal.define(({models}) => ({
+  router: models.global(Router.Model),
+}))
 @dal(() => ({
-  url: isBrowser() ? '/api' : `http://${process.env.HOST || 'localhost'}:${process.env.PORT}/api`,
+  url: isBrowser() ? `/api` : `http://${process.env.HOST || 'localhost'}:${process.env.PORT || '80'}/api`,
 }))
 export class Api {
-  createTodo() {
-    return this.put('/todo')
+  get todoId() {
+    return this.router.params.todoId || ''
   }
 
-  createItem(todoId, item) {
-    return this.put(`/todo/${todoId}`, item)
+  createTodoId() {
+    return this.put('/todo').then((todoId) => {
+      this.router.push(`/${todoId}`)
+      return todoId
+    })
   }
 
-  updateItem(todoId, item) {
-    return this.post(`/todo/${todoId}`, item)
+  addItem(item) {
+    if (!this.todoId) {
+      return this.createTodoId().then((todoId) => {
+        return this.put(`/todo/${todoId}`, item)
+      })
+    }
+    else {
+      return this.put(`/todo/${this.todoId}`, item)
+    }
   }
 
-  removeItem(todoId, id) {
-    return this.delete(`/todo/${todoId}`, {ids: [id]})
+  updateItems(items) {
+    return this.post(`/todo/${this.todoId}`, Array.isArray(items) ? items : [items])
   }
 
-  resolveItems(todoId) {
-    return this.resolve(`/todo/${todoId || ''}`)
+  removeItemsById(ids) {
+    return this.delete(`/todo/${this.todoId}`, Array.isArray(ids) ? ids : [ids])
+  }
+
+  getItems() {
+    return this.get(`/todo/${this.todoId}`).catch(() => {
+      this.router.replace('/')
+    })
   }
 }

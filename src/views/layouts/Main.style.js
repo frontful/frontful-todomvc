@@ -7,6 +7,12 @@ export default ({css}) => {
     textAlign: 'center',
   })
 
+  css('.header a', {
+    textDecoration: 'none',
+    outline: 'none',
+    color: 'inherit',
+  })
+
   css('.footer', {
     color: '#bfbfbf',
     fontSize: '10px',
