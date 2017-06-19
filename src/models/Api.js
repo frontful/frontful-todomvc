@@ -2,7 +2,7 @@ import {dal} from 'frontful-dal'
 import {isBrowser} from 'frontful-utils'
 
 @dal(() => ({
-  url: isBrowser() ? '/api' : `http://localhost:${process.env.PORT}/api`,
+  url: isBrowser() ? '/api' : `http://${process.env.HOST || 'localhost'}:${process.env.PORT}/api`,
 }))
 export class Api {
   createTodo() {
