@@ -2312,8 +2312,8 @@ fresh@0.5.0:
     query-string "^4.3.4"
 
 "frontful-style@0.x || 1.x":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/frontful-style/-/frontful-style-0.0.13.tgz#c4302f7c90c70fe12e5f6c0ab628fedd0aeecc15"
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/frontful-style/-/frontful-style-0.0.14.tgz#214b447a4518da583776b43dd0c72c74f015274d"
   dependencies:
     frontful-utils "0.x || 1.x"
     inline-style-prefixer "^3.0.2"
@@ -3261,9 +3261,9 @@ mobx-react@^4.1.8:
   dependencies:
     hoist-non-react-statics "^1.2.0"
 
-mobx@^3.1.9:
-  version "3.1.16"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.16.tgz#7ef06b6de7cba31d2ca872484d47ee36265d7768"
+mobx@3.1.15:
+  version "3.1.15"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.15.tgz#b2c8831725de2f6f1b8d136e589b674b5b75c35d"
 
 ms@0.7.1:
   version "0.7.1"

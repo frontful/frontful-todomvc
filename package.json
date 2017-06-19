@@ -19,7 +19,7 @@
     "frontful-router": "0.x || 1.x",
     "frontful-style": "0.x || 1.x",
     "frontful-utils": "0.x || 1.x",
-    "mobx": "^3.1.9",
+    "mobx": "3.1.15",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }
