@@ -2,9 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 
 // Coldreload causes module to be reloaded and state to be lost,
-// arbitrary `express` module has been chosen to persist state because
-// arbitrary modules are not reloaded
-const store = express.store = express.store || {}
+// arbitrary `process` attribute has been chosen to persist state
+const store = process.todomvc_store = process.todomvc_store || {}
 
 const app = express()
 
@@ -43,10 +42,10 @@ app.post('/todo/:id', (req, res) => {
       const item = items.find((item) => item.id === updateItem.id)
       Object.assign(item, updateItem)
     })
-    res.json({})
+    res.json(true)
   }
   else {
-    res.status(400).json({})
+    res.status(400).json(false)
   }
 })
 

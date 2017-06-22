@@ -7,7 +7,7 @@
   "scripts": {
     "build": "frontful-environment build",
     "start": "frontful-environment start",
-    "start:build": "frontful-environment build && PORT=8000 node ./build/server"
+    "start:build": "frontful-environment build && cross-env PORT=8000 node ./build/server"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -20,7 +20,11 @@
     "frontful-style": "0.x || 1.x",
     "frontful-utils": "0.x || 1.x",
     "mobx": "^3.1.16",
+    "mongoose": "^4.10.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1"
   }
 }
