@@ -5,6 +5,7 @@ export default ({css}) => {
   css('.item', {
     position: 'relative',
     borderBottom: '1px solid #ededed',
+    overflow: 'hidden',
   })
 
   css('.item:last-child', {
@@ -13,21 +14,25 @@ export default ({css}) => {
 
   css('.checkbox', {
     position: 'absolute',
+    left: '-9999px',
+    userSelect: 'none',
+  })
+
+  css('.checkbox + label', {
+    position: 'absolute',
     top: '0',
     bottom: '0',
     height: '40px',
     width: '40px',
     outline: 'none',
-    appearance: 'none',
     margin: 'auto 0',
-    userSelect: 'none',
   })
 
-  css('.checkbox:after', {
+  css('.checkbox + label:after', {
     content: `url(${imgUnchecked})`,
   })
 
-  css('.checkbox:checked:after', {
+  css('.checkbox:checked + label:after', {
     content: `url(${imgChecked})`,
   })
 

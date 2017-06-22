@@ -5,6 +5,7 @@ import Input from './Input'
 
 @resolver((resolve) => {
   resolve(({item, remove}) => ({
+    id: item.id,
     remove: remove,
     completed: item.completed,
     text: item.text,
@@ -25,18 +26,20 @@ export default class Item extends React.PureComponent {
   }
 
   render() {
-    const {style, completed, text, toggle, Input, remove} = this.props
+    const {style, completed, text, toggle, Input, remove, id} = this.props
 
     return (
       <div className={style.css('item')}>
         {this.state.mode === 'view' ?
           <div>
             <input
+              id={id}
               className={style.css('checkbox')}
               type="checkbox"
               checked={completed}
               onChange={toggle}
             />
+            <label htmlFor={id}></label>
             <label
               className={style.css('text', completed && 'completed')}
               onDoubleClick={this.toggleModes}>

@@ -11,7 +11,7 @@ export default ({css}) => {
     WebkitFontSmoothing: 'antialiased',
     MozFontSmoothing: 'antialiased',
     fontSmoothing: 'antialiased',
-    fontWeight: '300',
+    fontWeight: '200',
     margin: '0 auto',
     maxWidth: '550px',
     minWidth: '230px',
@@ -20,7 +20,7 @@ export default ({css}) => {
   const placeholder = {
     color: '#e6e6e6',
     fontStyle: 'italic',
-    fontWeight: '300',
+    fontWeight: '200',
   }
 
   css('input::-webkit-input-placeholder', placeholder)

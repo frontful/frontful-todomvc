@@ -16,23 +16,26 @@ export default ({css}) => {
 
   css('.checkbox', {
     position: 'absolute',
+    left: '-9999px',
+  })
+
+  css('.checkbox + label', {
+    position: 'absolute',
     top: '4px',
     left: '1px',
     bottom: '0',
     outline: 'none',
-    appearance: 'none',
     margin: 'auto 0',
-    userSelect: 'none',
     transform: 'rotate(90deg)',
     color: 'rgb(230, 230, 230)',
   })
 
-  css('.checkbox:after', {
+  css('.checkbox + label:after', {
     content: '"❯"',
     fontSize: '22px',
   })
 
-  css('.checkbox:checked', {
+  css('.checkbox:checked + label', {
     color: '#737373'
   })
 }

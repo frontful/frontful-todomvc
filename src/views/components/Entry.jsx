@@ -24,12 +24,16 @@ export default class Entry extends React.PureComponent {
     return (
       <section className={style.css('entry')}>
         {allCount > 0 &&
-          <input
-            className={style.css('checkbox')}
-            type="checkbox"
-            checked={completed}
-            onChange={toggle}
-          />
+          <div>
+            <input
+              id="toggleAll"
+              className={style.css('checkbox')}
+              type="checkbox"
+              checked={completed}
+              onChange={toggle}
+            />
+            <label htmlFor="toggleAll"></label>
+          </div>
         }
         <Input />
       </section>
