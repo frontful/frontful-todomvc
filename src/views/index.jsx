@@ -1,11 +1,10 @@
-import base from './index.style'
+import style from './index.style'
 
 import Main from './layouts/Main'
 import React from 'react'
 import Todos from './pages/Todos'
 import {Router} from 'frontful-router'
 import {resolver} from 'frontful-resolver'
-import {style} from 'frontful-style'
 
 @resolver((resolve) => {
   resolve(() => ({
@@ -18,7 +17,7 @@ import {style} from 'frontful-style'
       </Router>
   }))
 })
-@style(base)
+@style
 export default class Index extends React.PureComponent {
   render() {
     const {View} = this.props

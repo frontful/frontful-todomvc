@@ -1,12 +1,11 @@
 import imgChecked from '../../../assets/img/checked.svg'
 import imgUnchecked from '../../../assets/img/unchecked.svg'
-import {font} from '../style/utils'
 
 export default ({css}) => {
   css('.item', {
-    position: 'relative',
     borderBottom: '1px solid #ededed',
     overflow: 'hidden',
+    position: 'relative',
   })
 
   css('.item:last-child', {
@@ -14,19 +13,19 @@ export default ({css}) => {
   })
 
   css('.checkbox', {
-    position: 'absolute',
     left: '-9999px',
+    position: 'absolute',
     userSelect: 'none',
   })
 
   css('.checkbox + label', {
-    position: 'absolute',
-    top: '0',
     bottom: '0',
     height: '40px',
-    width: '40px',
-    outline: 'none',
     margin: 'auto 0',
+    outline: 'none',
+    position: 'absolute',
+    top: '0',
+    width: '40px',
   })
 
   css('.checkbox + label:after', {
@@ -38,20 +37,20 @@ export default ({css}) => {
   })
 
   css('.button', {
-    display: 'none',
-    position: 'absolute',
-    top: '0',
-    bottom: '5px',
-    right: '0',
-    width: '60px',
-    outline: 'none',
     appearance: 'none',
-    border: 'none',
     background: 'none',
-    margin: 'auto 0',
-    userSelect: 'none',
+    border: 'none',
+    bottom: '5px',
     color: '#cc9a9a',
-    ...font(30),
+    display: 'none',
+    fontSize: '30px',
+    margin: 'auto 0',
+    outline: 'none',
+    position: 'absolute',
+    right: '0',
+    top: '0',
+    userSelect: 'none',
+    width: '60px',
   })
 
   css('.item:hover .button', {
@@ -67,13 +66,13 @@ export default ({css}) => {
   })
 
   css('.text', {
+    display: 'block',
+    fontSize: '24px',
+    lineHeight: '1.1em',
+    padding: '16px 60px 16px 60px',
+    transition: 'color 0.4s',
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
-    padding: '16px 60px 16px 60px',
-    display: 'block',
-    lineHeight: '1.1em',
-    fontSize: '24px',
-    transition: 'color 0.4s',
   })
 
   css('.text.completed', {

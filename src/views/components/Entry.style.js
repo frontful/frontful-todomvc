@@ -1,7 +1,7 @@
 export default ({css}) => {
   css('.entry', {
-    borderBottom: '1px solid #e6e6e6',
     background: 'rgba(0, 0, 0, 0.003)',
+    borderBottom: '1px solid #e6e6e6',
     boxShadow: 'inset 0 -2px 1px rgba(0,0,0,0.03)',
     position: 'relative',
   })
@@ -20,14 +20,14 @@ export default ({css}) => {
   })
 
   css('.checkbox + label', {
+    bottom: '0',
+    color: 'rgb(230, 230, 230)',
+    left: '1px',
+    margin: 'auto 0',
+    outline: 'none',
     position: 'absolute',
     top: '4px',
-    left: '1px',
-    bottom: '0',
-    outline: 'none',
-    margin: 'auto 0',
     transform: 'rotate(90deg)',
-    color: 'rgb(230, 230, 230)',
   })
 
   css('.checkbox + label:after', {

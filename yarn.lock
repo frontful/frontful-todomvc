@@ -2345,8 +2345,8 @@ fresh@0.5.0:
     query-string "^4.3.4"
 
 "frontful-style@0.x || 1.x":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/frontful-style/-/frontful-style-0.0.16.tgz#8f1d20c9a2be9660ab77c1ab6fcdbe439277e55d"
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/frontful-style/-/frontful-style-0.0.17.tgz#595959dc8bf52af3dbced2c0ed9333b9dfb852cf"
   dependencies:
     frontful-utils "0.x || 1.x"
     inline-style-prefixer "^3.0.2"

@@ -1,7 +1,7 @@
 import {Api} from './Api'
 import {Router} from 'frontful-router'
 import {TodoItem} from './TodoItem'
-import {action, computed} from 'mobx'
+import {action, computed, untracked} from 'mobx'
 import {model, formatter} from 'frontful-model'
 
 @model.define(({models}) => ({
@@ -14,12 +14,14 @@ import {model, formatter} from 'frontful-model'
 })
 export class Todo {
   initialize() {
-    if (this.todoId !== this.api.todoId) {
-      this.todoId = this.api.todoId
-      return this.api.getItems().then((items) => {
-        this.items = items
-      })
-    }
+    return untracked(() => {
+      if (this.todoId !== this.api.todoId) {
+        this.todoId = this.api.todoId
+        return this.api.getItems().then((items) => {
+          this.items = items
+        })
+      }
+    })
   }
 
   add = (text) => {

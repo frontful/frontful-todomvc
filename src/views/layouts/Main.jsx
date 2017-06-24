@@ -1,15 +1,7 @@
 import React from 'react'
 import {Link} from 'frontful-router'
-import {Todo} from '../../models/Todo'
-import {resolver} from 'frontful-resolver'
 import {style} from 'frontful-style'
 
-@resolver.define(({models}) => ({
-  todo: models.global(Todo)
-}))
-@resolver((resolve) => {
-  resolve.untracked(({todo}) => todo.initialize())
-})
 @style(require('./Main.style'))
 export default class Main extends React.PureComponent {
   render() {

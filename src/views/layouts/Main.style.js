@@ -1,11 +1,6 @@
-export default ({css, theme: {
-  colors: {
-    appFooter: footerColor,
-    appHeader: headerColor,
-  }
-}}) => {
+export default ({css}) => {
   css('.header', {
-    color: headerColor,
+    color: 'rgba(175, 47, 47, 0.15)',
     fontSize: '100px',
     fontWeight: '100',
     margin: '9px 0 4px 0',
@@ -13,13 +8,13 @@ export default ({css, theme: {
   })
 
   css('.header a', {
-    textDecoration: 'none',
-    outline: 'none',
     color: 'inherit',
+    outline: 'none',
+    textDecoration: 'none',
   })
 
   css('.footer', {
-    color: footerColor,
+    color: '#bfbfbf',
     fontSize: '10px',
     lineHeight: '2em',
     marginTop: '60px',
@@ -35,7 +30,7 @@ export default ({css, theme: {
     color: 'inherit',
     cursor: 'default',
     fontWeight: '400',
-    textDecoration: 'none',
     outline: 'none',
+    textDecoration: 'none',
   })
 }

@@ -18,12 +18,13 @@ app.use((req, res, next) => {
         <head>
           <title>Frontful TodoMVC</title>
           <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
           ${context.style}
+          <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-101492318-2', 'auto');ga('send', 'pageview');</script>
         </head>
         <body>
-          <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-101492318-2', 'auto');ga('send', 'pageview');</script>
           <div id="app">${context.view}</div>
           ${context.state}
           <script src="${assets.js.vendor}"></script>
@@ -32,8 +33,10 @@ app.use((req, res, next) => {
       </html>
     `)
   }).catch((error) => {
-    if (error instanceof Exceptions.Cancel) next()
-    else next(error)
+    if (error instanceof Exceptions.Cancel)
+      next()
+    else
+      next(error)
   })
 })
 

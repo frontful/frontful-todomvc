@@ -27,7 +27,7 @@ app.post('/todo/:id', (req, res) => {
   const {params: {id}, body: items} = req
   if (todos[id] && Array.isArray(items)) {
     items.forEach((item) => {
-      const match = todos[id].find((item) => item.id === item.id)
+      const match = todos[id].find((i) => i.id === item.id)
       Object.assign(match, item)
     })
     res.json(true)
@@ -41,7 +41,7 @@ app.delete('/todo/:id', (req, res) => {
   if (todos[id] && Array.isArray(ids)) {
     const items = todos[id]
     ids.forEach((id) => {
-      const match = items.find((item) => item.id === id)
+      const match = items.find((i) => i.id === id)
       items.splice(items.indexOf(match), 1)
     })
     res.json(true)

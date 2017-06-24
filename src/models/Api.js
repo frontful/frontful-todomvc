@@ -41,6 +41,7 @@ export class Api {
 
   getItems() {
     return this.get(`/todo/${this.todoId}`).catch(() => {
+      //TODO: throw new Router.Exceptions.NotFound()
       this.router.replace('/')
     })
   }

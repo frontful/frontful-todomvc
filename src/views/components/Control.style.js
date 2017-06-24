@@ -1,15 +1,12 @@
-import {font} from '../style/utils'
-
-export default ({css, media, theme: {roundness}}) => {
+export default ({css}) => {
   css('.footer', {
     color: '#777777',
-    padding: '10px 15px',
     height: '20px',
-    textAlign: 'center',
+    padding: '10px 15px',
     position: 'relative',
+    textAlign: 'center',
   })
 
-  // Media queries can be written like nested css blocks
   css('@media screen and (max-width: 430px)', ({css}) => {
     css('.footer', {
       height: '50px',
@@ -17,20 +14,20 @@ export default ({css, media, theme: {roundness}}) => {
   })
 
   css('.footer:before ', {
-    content: `''`,
-    position: 'absolute',
-    right: '0',
     bottom: '0',
-    left: '0',
-    height: '17px',
-    overflow: 'hidden',
-    boxShadow: roundness ? 'none' : `
+    boxShadow: `
       0 1px 1px rgba(0, 0, 0, 0.2),
       0 8px 0 -3px #f6f6f6,
       0 9px 1px -3px rgba(0, 0, 0, 0.2),
       0 16px 0 -6px #f6f6f6,
       0 17px 2px -6px rgba(0, 0, 0, 0.2)
-    `
+    `,
+    content: `''`,
+    height: '17px',
+    left: '0',
+    overflow: 'hidden',
+    position: 'absolute',
+    right: '0',
   })
 
   css('.status', {
@@ -39,27 +36,26 @@ export default ({css, media, theme: {roundness}}) => {
   })
 
   css('.filters', {
+    left: 0,
     position: 'absolute',
     right: 0,
-    left: 0,
   })
 
-  //Media queries can be written using extensions
-  media.phone(({css}) => {
+  css('@media screen and (max-width: 430px)', ({css}) => {
     css('.filters', {
       bottom: '10px',
     })
   })
 
   css('.filter', {
-    outline: 'none',
-    color: 'inherit',
-    margin: '5px',
-    padding: '3px 7px',
-    textDecoration: 'none',
     border: '1px solid transparent',
     borderRadius: '3px',
+    color: 'inherit',
     cursor: 'default',
+    margin: '5px',
+    outline: 'none',
+    padding: '3px 7px',
+    textDecoration: 'none',
   })
 
   css('.filter:hover', {
@@ -71,20 +67,20 @@ export default ({css, media, theme: {roundness}}) => {
   })
 
   css('.button', {
-    outline: 'none',
-    float: 'right',
-    position: 'relative',
-    lineHeight: '20px',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    margin: '0',
-    padding: '0',
-    border: '0',
-    background: 'none',
-    ...font(),
-    color: 'inherit',
-    verticalAlign: 'baseline',
     appearance: 'none',
+    background: 'none',
+    border: '0',
+    color: 'inherit',
+    cursor: 'pointer',
+    float: 'right',
+    fontSize: 'inherit',
+    lineHeight: '20px',
+    margin: '0',
+    outline: 'none',
+    padding: '0',
+    position: 'relative',
+    textDecoration: 'none',
+    verticalAlign: 'baseline',
   })
 
   css('.button:hover', {
