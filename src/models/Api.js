@@ -1,6 +1,6 @@
+import {Router} from 'frontful-router'
 import {dal} from 'frontful-dal'
 import {isBrowser} from 'frontful-utils'
-import {Router} from 'frontful-router'
 
 @dal.define(({models}) => ({
   router: models.global(Router.Model),

@@ -1,6 +1,6 @@
 import React from 'react'
 import Views from '../../views'
-import compileContext from './utils/compileContext'
+import compile from './utils/compile'
 import express from 'express'
 import path from 'path'
 import {Exceptions} from 'frontful-resolver'
@@ -10,7 +10,7 @@ const app = express()
 app.use(express.static(path.resolve(process.cwd(), 'assets/root'), {maxAge: '7d'}))
 
 app.use((req, res, next) => {
-  compileContext(<Views/>, {req, res}).then((context) => {
+  compile(<Views/>, {req, res}).then((context) => {
     const assets = global.frontful.environment.assets
     res.send(`
       <!DOCTYPE html>

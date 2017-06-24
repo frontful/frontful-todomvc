@@ -1,8 +1,8 @@
-import {TodoItem} from './TodoItem'
-import {model, formatter} from 'frontful-model'
-import {action, computed} from 'mobx'
-import {Router} from 'frontful-router'
 import {Api} from './Api'
+import {Router} from 'frontful-router'
+import {TodoItem} from './TodoItem'
+import {action, computed} from 'mobx'
+import {model, formatter} from 'frontful-model'
 
 @model.define(({models}) => ({
   router: models.global(Router.Model),

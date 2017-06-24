@@ -1,7 +1,7 @@
 let api
 
 if (process.env.DB) {
-  api = require('./api.mongo')
+  api = require('./api.database')
 }
 else {
   api = require('./api.process')

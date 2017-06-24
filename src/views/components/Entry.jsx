@@ -1,8 +1,8 @@
-import React from 'react'
-import {style} from 'frontful-style'
-import {resolver} from 'frontful-resolver'
-import {Todo} from '../../models/Todo'
 import Input from './Input'
+import React from 'react'
+import {Todo} from '../../models/Todo'
+import {resolver} from 'frontful-resolver'
+import {style} from 'frontful-style'
 
 @resolver.define(({models}) => ({
   todo: models.global(Todo)

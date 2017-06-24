@@ -1,8 +1,8 @@
 import React from 'react'
-import {style} from 'frontful-style'
-import {resolver} from 'frontful-resolver'
-import {Todo} from '../../models/Todo'
 import ReactDOM from 'react-dom'
+import {Todo} from '../../models/Todo'
+import {resolver} from 'frontful-resolver'
+import {style} from 'frontful-style'
 
 @resolver.define(({models}) => ({
   todo: models.global(Todo)
@@ -29,6 +29,12 @@ export default class Input extends React.PureComponent {
     if (event.keyCode === 13) {
       event.preventDefault()
       this.save()
+    }
+    else if (event.keyCode === 27) {
+      if (this.props.onBlur) {
+        event.preventDefault()
+        this.props.onBlur()
+      }
     }
   }
 

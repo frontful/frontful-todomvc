@@ -1,6 +1,6 @@
-import {model} from 'frontful-model'
 import {Api} from './Api'
 import {Todo} from './Todo'
+import {model} from 'frontful-model'
 
 @model.define(({models}) => ({
   api: models.global(Api),
@@ -16,17 +16,17 @@ export class TodoItem {
     this.id = this.id || Math.random().toString(36).substr(2, 3)
   }
 
+  remove = () => {
+    return this.api.removeItemsById(this.id).then(() => {
+      this.todo.removeItem(this)
+    })
+  }
+
   toggle = () => {
     const update = this.serialize()
     update.completed = !this.completed
     return this.api.updateItems(update).then(() => {
       this.completed = !this.completed
-    })
-  }
-
-  remove = () => {
-    return this.api.removeItemsById(this.id).then(() => {
-      this.todo.removeItem(this)
     })
   }
 

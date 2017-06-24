@@ -1,7 +1,7 @@
-import React from 'react'
-import {style} from 'frontful-style'
-import {resolver} from 'frontful-resolver'
 import Input from './Input'
+import React from 'react'
+import {resolver} from 'frontful-resolver'
+import {style} from 'frontful-style'
 
 @resolver((resolve) => {
   resolve(({item, remove}) => ({

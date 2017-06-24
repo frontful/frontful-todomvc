@@ -1,12 +1,11 @@
 import base from './index.style'
 
+import Main from './layouts/Main'
 import React from 'react'
+import Todos from './pages/Todos'
 import {Router} from 'frontful-router'
 import {resolver} from 'frontful-resolver'
 import {style} from 'frontful-style'
-
-import Main from './layouts/Main'
-import Todos from './pages/Todos'
 
 @resolver((resolve) => {
   resolve(() => ({
