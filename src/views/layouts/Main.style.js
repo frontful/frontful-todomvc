@@ -1,6 +1,11 @@
-export default ({css}) => {
+export default ({css, theme: {
+  colors: {
+    appFooter: footerColor,
+    appHeader: headerColor,
+  }
+}}) => {
   css('.header', {
-    color: 'rgba(175, 47, 47, 0.15)',
+    color: headerColor,
     fontSize: '100px',
     fontWeight: '100',
     margin: '9px 0 4px 0',
@@ -14,7 +19,7 @@ export default ({css}) => {
   })
 
   css('.footer', {
-    color: '#bfbfbf',
+    color: footerColor,
     fontSize: '10px',
     lineHeight: '2em',
     marginTop: '60px',

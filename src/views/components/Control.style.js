@@ -1,10 +1,19 @@
-export default ({css}) => {
+import {font} from '../style/utils'
+
+export default ({css, media, theme: {roundness}}) => {
   css('.footer', {
-    color: '#777',
+    color: '#777777',
     padding: '10px 15px',
     height: '20px',
     textAlign: 'center',
     position: 'relative',
+  })
+
+  // Media queries can be written like nested css blocks
+  css('@media screen and (max-width: 430px)', ({css}) => {
+    css('.footer', {
+      height: '50px',
+    })
   })
 
   css('.footer:before ', {
@@ -15,7 +24,7 @@ export default ({css}) => {
     left: '0',
     height: '17px',
     overflow: 'hidden',
-    boxShadow: `
+    boxShadow: roundness ? 'none' : `
       0 1px 1px rgba(0, 0, 0, 0.2),
       0 8px 0 -3px #f6f6f6,
       0 9px 1px -3px rgba(0, 0, 0, 0.2),
@@ -33,6 +42,13 @@ export default ({css}) => {
     position: 'absolute',
     right: 0,
     left: 0,
+  })
+
+  //Media queries can be written using extensions
+  media.phone(({css}) => {
+    css('.filters', {
+      bottom: '10px',
+    })
   })
 
   css('.filter', {
@@ -61,20 +77,14 @@ export default ({css}) => {
     lineHeight: '20px',
     textDecoration: 'none',
     cursor: 'pointer',
-
     margin: '0',
     padding: '0',
     border: '0',
     background: 'none',
-    fontSize: '100%',
-    verticalAlign: 'baseline',
-    fontFamily: 'inherit',
-    fontWeight: 'inherit',
+    ...font(),
     color: 'inherit',
+    verticalAlign: 'baseline',
     appearance: 'none',
-    WebkitFontSmoothing: 'antialiased',
-    MozFontSmoothing: 'antialiased',
-    fontSmoothing: 'antialiased',
   })
 
   css('.button:hover', {

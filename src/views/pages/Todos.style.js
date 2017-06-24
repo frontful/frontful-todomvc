@@ -1,6 +1,9 @@
-export default ({css}) => {
+export default ({css, theme: {
+  roundness
+}}) => {
   css('.todos', {
-    backgroundColor: '#fff',
+    borderRadius: roundness ? `${roundness}px` : '0',
+    backgroundColor: '#ffffff',
     lineHeight: '1.4em',
     boxShadow: `
       0 2px 4px 0 rgba(0, 0, 0, 0.2),

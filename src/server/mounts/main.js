@@ -17,7 +17,9 @@ app.use((req, res, next) => {
       <html lang="en">
         <head>
           <title>Frontful TodoMVC</title>
+          <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+          <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
           ${context.style}
         </head>
         <body>

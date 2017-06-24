@@ -1,20 +1,24 @@
-export default ({css}) => {
+import {style} from 'frontful-style'
+import {theme} from './style/theme'
+import {font} from './style/utils'
+import {media} from './style/media'
+
+style.manager.dependencies = {theme}
+style.manager.extensions = {media}
+
+export default ({css, theme: {colors: {appBackground}}}) => {
   css('body, html', {
     margin: '0',
     padding: '0',
   })
 
   css('body', {
-    background: '#f5f5f5',
+    background: appBackground,
     color: '#4d4d4d',
-    font: `14px 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-    WebkitFontSmoothing: 'antialiased',
-    MozFontSmoothing: 'antialiased',
-    fontSmoothing: 'antialiased',
-    fontWeight: '200',
     margin: '0 auto',
     maxWidth: '550px',
     minWidth: '230px',
+    ...font(14),
   })
 
   const placeholder = {

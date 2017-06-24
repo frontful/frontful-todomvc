@@ -1,5 +1,6 @@
 import imgChecked from '../../../assets/img/checked.svg'
 import imgUnchecked from '../../../assets/img/unchecked.svg'
+import {font} from '../style/utils'
 
 export default ({css}) => {
   css('.item', {
@@ -47,15 +48,10 @@ export default ({css}) => {
     appearance: 'none',
     border: 'none',
     background: 'none',
-    fontWeight: 'inherit',
     margin: 'auto 0',
-    font: 'inherit',
     userSelect: 'none',
-    fontSize: '30px',
     color: '#cc9a9a',
-    WebkitFontSmoothing: 'antialiased',
-    MozFontSmoothing: 'antialiased',
-    fontSmoothing: 'antialiased',
+    ...font(30),
   })
 
   css('.item:hover .button', {

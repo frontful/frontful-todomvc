@@ -22,11 +22,7 @@ export default class Controls extends React.PureComponent {
     const {className, style, activeCount, filter, clearCompleted, allCount, todoId} = this.props
     const status = `${activeCount} ${activeCount === 1 ? 'item' : 'items'} left`
 
-    if (allCount === 0) {
-      return null
-    }
-
-    return (
+    return (allCount > 0 ?
       <section className={style.css(className, 'footer')}>
         <span className={style.css('status')}>
           {status}
@@ -39,7 +35,8 @@ export default class Controls extends React.PureComponent {
         {allCount !== activeCount &&
           <button className={style.css('button')} onClick={clearCompleted}>Clear completed</button>
         }
-      </section>
+      </section> :
+      null
     )
   }
 }
