@@ -1,11 +1,11 @@
 import {Router} from 'frontful-router'
-import {dal} from 'frontful-dal'
+import {dao} from 'frontful-dao'
 import {isBrowser} from 'frontful-utils'
 
-@dal.define(({models}) => ({
+@dao.define(({models}) => ({
   router: models.global(Router.Model),
 }))
-@dal(() => ({
+@dao(() => ({
   url: isBrowser() ? `/api` : `http://${process.env.HOST || 'localhost'}:${process.env.PORT || '80'}/api`,
 }))
 export class Api {

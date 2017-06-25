@@ -6,7 +6,7 @@ import {model} from 'frontful-model'
   api: models.global(Api),
   todo: models.global(Todo),
 }))
-@model.format({
+@model({
   id: '',
   text: '',
   completed: false,

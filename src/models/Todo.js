@@ -8,7 +8,7 @@ import {model, formatter} from 'frontful-model'
   router: models.global(Router.Model),
   api: models.global(Api),
 }))
-@model.format({
+@model({
   todoId: null,
   items: formatter.array(formatter.model(TodoItem)),
 })

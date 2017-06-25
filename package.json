@@ -12,7 +12,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
-    "frontful-dal": "0.x || 1.x",
+    "frontful-dao": "0.x || 1.x",
     "frontful-environment": "0.x || 1.x",
     "frontful-model": "0.x || 1.x",
     "frontful-resolver": "0.x || 1.x",
