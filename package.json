@@ -4,6 +4,9 @@
   "engines": {
     "node": ">=6"
   },
+  "frontful": {
+    "config": "./config.js"
+  },
   "scripts": {
     "build": "frontful-environment build",
     "start": "frontful-environment start",
@@ -12,15 +15,16 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
+    "frontful-config": "0.x || 1.x",
     "frontful-dao": "0.x || 1.x",
-    "frontful-environment": "0.x || 1.x",
+    "frontful-environment": "^0.0.36",
     "frontful-model": "0.x || 1.x",
     "frontful-resolver": "0.x || 1.x",
     "frontful-router": "0.x || 1.x",
     "frontful-style": "0.x || 1.x",
     "frontful-utils": "0.x || 1.x",
-    "mobx": "^3.1.16",
-    "mongoose": "^4.10.8",
+    "mobx": "^3.2.0",
+    "mongoose": "^4.11.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },

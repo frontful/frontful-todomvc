@@ -9,10 +9,10 @@ const {models, resolver} = initialize(<Views />)
 window.frontful.environment.coldreload.serializer = () => models.serialize()
 window.frontful.environment.coldreload.deserializer = (state) => models.deserialize(state)
 
-resolver.execute().then((Application) => {
+resolver.execute().then((View) => {
   ReactDOM.render(
     <Style>
-      <Application />
+      <View />
     </Style>,
     document.getElementById('app')
   )
