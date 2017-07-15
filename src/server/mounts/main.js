@@ -1,6 +1,7 @@
 import React from 'react'
 import Views from '../../views'
 import compile from './utils/compile'
+import environment from 'frontful-environment'
 import express from 'express'
 import path from 'path'
 import {Exceptions} from 'frontful-resolver'
@@ -11,7 +12,7 @@ app.use(express.static(path.resolve(process.cwd(), 'assets/root'), {maxAge: '7d'
 
 app.use((req, res, next) => {
   compile(<Views/>, {req, res}).then((context) => {
-    const assets = global.frontful.environment.assets
+    const bundle = environment.bundle
     res.send(`
       <!DOCTYPE html>
       <html lang="en">
@@ -27,8 +28,8 @@ app.use((req, res, next) => {
         <body>
           <div id="app">${context.view}</div>
           ${context.state}
-          <script src="${assets.js.vendor}"></script>
-          <script src="${assets.js.main}"></script>
+          <script src="${bundle.js.vendor}"></script>
+          <script src="${bundle.js.main}"></script>
         </body>
       </html>
     `)
