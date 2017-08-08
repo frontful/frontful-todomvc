@@ -1,5 +1,7 @@
 {
   "name": "frontful-todomvc",
+  "version": "1.0.0",
+  "description": "Isomorphic React, Express and Frontful implementation of TodoMVC application to showcase various Frontful infrastructure elements",
   "private": true,
   "engines": {
     "node": ">=6"
