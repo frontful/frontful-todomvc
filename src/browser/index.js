@@ -11,7 +11,7 @@ environment.coldreload.serializer = () => models.serialize()
 environment.coldreload.deserializer = (state) => models.deserialize(state)
 
 resolver.execute().then((View) => {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <Style>
       <View />
     </Style>,
