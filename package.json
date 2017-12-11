@@ -7,7 +7,13 @@
     "node": ">=6"
   },
   "frontful": {
-    "config": "./config.js"
+    "config": "./config.js",
+    "environment": {
+      "memory": false,
+      "server": {
+        "port": 8000
+      }
+    }
   },
   "scripts": {
     "build": "yarn test && frontful-environment build",

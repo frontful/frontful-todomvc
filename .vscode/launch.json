@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [],
+      "program": "${workspaceFolder}/node_modules/.bin/frontful-environment",
+      "args": [
+        "start"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/build/*"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}",
+      "protocol": "inspector",
+      "timeout": 15000,
+      "trace": false,
+    }
+  ]
+}
