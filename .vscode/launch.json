@@ -4,21 +4,35 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch",
-      "runtimeExecutable": "node",
-      "runtimeArgs": [],
+      "name": "Start Node",
       "program": "${workspaceFolder}/node_modules/.bin/frontful-environment",
       "args": [
-        "start"
+        "start",
       ],
       "outFiles": [
-        "${workspaceFolder}/build/*"
+        "${workspaceFolder}/build/*",
       ],
       "sourceMaps": true,
       "cwd": "${workspaceFolder}",
       "protocol": "inspector",
       "timeout": 15000,
       "trace": false,
-    }
-  ]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Start Chrome",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}",
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Start Node & Chrome",
+      "configurations": [
+        "Start Node",
+        "Start Chrome",
+      ],
+    },
+  ],
 }
