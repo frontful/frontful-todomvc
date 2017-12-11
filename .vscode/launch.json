@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Start Node",
-      "program": "${workspaceFolder}/node_modules/.bin/frontful-environment",
+      "program": "${workspaceFolder}/node_modules/frontful-environment/bin/frontful-environment.js",
       "args": [
         "start",
       ],
