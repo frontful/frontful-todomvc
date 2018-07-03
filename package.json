@@ -4,7 +4,7 @@
   "description": "Isomorphic React, Express and Frontful implementation of TodoMVC application to showcase various Frontful infrastructure elements",
   "private": true,
   "engines": {
-    "node": ">=6"
+    "node": ">=8.11.3"
   },
   "frontful": {
     "config": "./config.js",
@@ -25,15 +25,15 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
-    "frontful-config": "2.x",
-    "frontful-dao": "2.x",
-    "frontful-environment": "2.x",
-    "frontful-model": "2.x",
-    "frontful-resolver": "2.x",
-    "frontful-router": "2.x",
-    "frontful-style": "2.x",
-    "frontful-utils": "2.x",
-    "mobx": "^3.2.0",
+    "frontful-config": "3.x",
+    "frontful-dao": "3.x",
+    "frontful-environment": "3.x",
+    "frontful-model": "3.x",
+    "frontful-resolver": "3.x",
+    "frontful-router": "3.x",
+    "frontful-style": "3.x",
+    "frontful-utils": "3.x",
+    "mobx": "4.x",
     "mongoose": "^4.11.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
