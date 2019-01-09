@@ -11,7 +11,7 @@ import {model} from 'frontful-model'
   text: '',
   completed: false,
 })
-export class TodoItem {
+class TodoItem {
   constructor() {
     this.id = this.id || Math.random().toString(36).substr(2, 3)
   }
@@ -43,3 +43,5 @@ export class TodoItem {
     }
   }
 }
+
+export {TodoItem}

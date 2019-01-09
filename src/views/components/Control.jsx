@@ -17,7 +17,7 @@ import {style} from 'frontful-style'
   }))
 })
 @style(require('./Control.style'))
-export default class Controls extends React.PureComponent {
+class Controls extends React.PureComponent {
   render() {
     const {className, style, activeCount, filter, clearCompleted, allCount, todoId} = this.props
     const status = `${activeCount} ${activeCount === 1 ? 'item' : 'items'} left`
@@ -40,3 +40,5 @@ export default class Controls extends React.PureComponent {
     )
   }
 }
+
+export default Controls

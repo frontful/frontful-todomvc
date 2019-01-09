@@ -18,7 +18,7 @@ import {style} from 'frontful-style'
   }))
 })
 @style(require('./Entry.style'))
-export default class Entry extends React.PureComponent {
+class Entry extends React.PureComponent {
   render() {
     const {style, Input, completed, toggle, allCount} = this.props
     return (
@@ -40,3 +40,5 @@ export default class Entry extends React.PureComponent {
     )
   }
 }
+
+export default Entry

@@ -14,7 +14,7 @@ import {style} from 'frontful-style'
   }))
 })
 @style(require('./Input.style'))
-export default class Input extends React.PureComponent {
+class Input extends React.PureComponent {
   save = () => {
     const target = ReactDOM.findDOMNode(this.refs.input)
     const value = target.value.trim()
@@ -67,3 +67,5 @@ export default class Input extends React.PureComponent {
     )
   }
 }
+
+export default Input

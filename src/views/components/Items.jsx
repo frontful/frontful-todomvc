@@ -15,7 +15,7 @@ import {style} from 'frontful-style'
   }))
 })
 @style(require('./Items.style'))
-export default class Todos extends React.PureComponent {
+class Items extends React.PureComponent {
   render() {
     const {style, items} = this.props
     return (items.length ?
@@ -27,3 +27,5 @@ export default class Todos extends React.PureComponent {
     )
   }
 }
+
+export default Items

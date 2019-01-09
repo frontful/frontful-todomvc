@@ -12,7 +12,7 @@ import {model, formatter} from 'frontful-model'
   todoId: null,
   items: formatter.array(formatter.model(TodoItem)),
 })
-export class Todo {
+class Todo {
   initialize() {
     return untracked(() => {
       if (this.todoId !== this.api.todoId) {
@@ -96,3 +96,5 @@ export class Todo {
     }
   }
 }
+
+export {Todo}

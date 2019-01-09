@@ -8,7 +8,7 @@ import {isBrowser} from 'frontful-utils'
 @dao(() => ({
   url: isBrowser() ? `/api` : `http://${process.env.HOST || 'localhost'}:${process.env.PORT || '80'}/api`,
 }))
-export class Api {
+class Api {
   get todoId() {
     return this.router.params.todoId || ''
   }
@@ -46,3 +46,5 @@ export class Api {
     })
   }
 }
+
+export {Api}

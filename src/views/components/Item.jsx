@@ -14,7 +14,7 @@ import {style} from 'frontful-style'
   }))
 })
 @style(require('./Item.style'))
-export default class Item extends React.PureComponent {
+class Item extends React.PureComponent {
   state = {
     mode: 'view'
   }
@@ -53,3 +53,5 @@ export default class Item extends React.PureComponent {
     )
   }
 }
+
+export default Item

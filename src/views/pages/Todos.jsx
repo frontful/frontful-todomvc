@@ -20,10 +20,9 @@ import {style} from 'frontful-style'
   )
 })
 @style(require('./Todos.style'))
-export default class Todos extends React.PureComponent {
+class Todos extends React.PureComponent {
   render() {
     const {style, Entry, Items, Control} = this.props
-
     return (
       <section className={style.css('todos')}>
         <Entry />
@@ -33,3 +32,5 @@ export default class Todos extends React.PureComponent {
     )
   }
 }
+
+export default Todos

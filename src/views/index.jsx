@@ -18,9 +18,11 @@ import {resolver} from 'frontful-resolver'
   }))
 })
 @style
-export default class Index extends React.PureComponent {
+class Index extends React.PureComponent {
   render() {
     const {View} = this.props
     return <View />
   }
 }
+
+export default Index
