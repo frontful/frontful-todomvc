@@ -7,7 +7,7 @@
     "node": ">=8.11.3"
   },
   "frontful": {
-    "config": "./config.js",
+    "config": "./config/config.development.js",
     "environment": {
       "memory": false,
       "server": {
@@ -21,7 +21,7 @@
     "start:debug": "ndb frontful-environment start",
     "start:build": "yarn build && cross-env PORT=8000 node ./build/server",
     "test": "yarn test:eslint",
-    "test:eslint": "node ./node_modules/eslint/bin/eslint.js --max-warnings 0 ."
+    "test:eslint": "eslint --max-warnings 0 ."
   },
   "dependencies": {
     "body-parser": "^1.17.2",
