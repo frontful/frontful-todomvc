@@ -1,11 +1,8 @@
 {
   "name": "frontful-todomvc",
-  "version": "2.0.0",
+  "version": "4.0.0",
   "description": "Isomorphic React, Express and Frontful implementation of TodoMVC application to showcase various Frontful infrastructure elements",
   "private": true,
-  "engines": {
-    "node": ">=8.11.3"
-  },
   "frontful": {
     "config": "./config/config.development.js",
     "environment": {
@@ -17,29 +14,44 @@
   },
   "scripts": {
     "build": "yarn test && frontful-environment build",
+    "clean": "frontful-tools clean",
+    "install": "frontful-tools install",
     "start": "frontful-environment start",
-    "start:debug": "ndb frontful-environment start",
     "start:build": "yarn build && cross-env PORT=8000 node ./build/server",
+    "start:debug": "ndb frontful-environment start",
     "test": "yarn test:eslint",
-    "test:eslint": "eslint --max-warnings 0 ."
+    "test:eslint": "eslint --ext .jsx,.js --max-warnings 0 .",
+    "tools": "frontful-tools"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frontful/frontful-todomvc.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Arturs Girons <arturs.girons@gmail.com> (https://artursgirons.info/)"
+  ],
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
-    "frontful-config": "3.x",
-    "frontful-dao": "3.x",
-    "frontful-environment": "3.x",
-    "frontful-model": "3.x",
-    "frontful-resolver": "3.x",
-    "frontful-router": "3.x",
-    "frontful-style": "3.x",
-    "frontful-utils": "3.x",
+    "frontful-config": "4.x",
+    "frontful-dao": "4.x",
+    "frontful-environment": "4.x",
+    "frontful-model": "4.x",
+    "frontful-resolver": "4.x",
+    "frontful-router": "4.x",
+    "frontful-style": "4.x",
+    "frontful-utils": "4.x",
     "mobx": "4.x",
     "mongoose": "^4.11.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "cross-env": "^5.0.1"
+    "cross-env": "^5.0.1",
+    "frontful-tools": "4.x"
   }
 }
