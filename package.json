@@ -1,5 +1,5 @@
 {
-  "name": "frontful-todomvc",
+  "name": "@frontful/frontful-todomvc",
   "version": "4.0.0",
   "description": "Isomorphic React, Express and Frontful implementation of TodoMVC application to showcase various Frontful infrastructure elements",
   "private": true,
